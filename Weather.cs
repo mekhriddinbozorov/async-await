@@ -42,7 +42,7 @@ public class Weather : IWeather
         int randomNumber = rnd.Next(1, 12);
 
         var city = Cities.FirstOrDefault(c => c.Id == randomNumber);
-        if (city == null)
+        if (city is null)
             throw new CityNotFoundException(randomNumber);
 
         return PrintSingleCityAsync(city);
@@ -51,7 +51,7 @@ public class Weather : IWeather
     public Task PrintSingleCityAsync(int id)
     {
         var city = Cities.FirstOrDefault(c => c.Id == id);
-        if (city == null)
+        if (city is null)
             throw new CityNotFoundException(id);
 
         return PrintSingleCityAsync(city);
@@ -60,7 +60,7 @@ public class Weather : IWeather
     public Task PrintSingleCityAsync(string name)
     {
         var city = Cities.FirstOrDefault(c => string.Equals(c.Name, name, StringComparison.InvariantCultureIgnoreCase));
-        if (city == null)
+        if (city is null)
             throw new CityNotFoundException(name);
 
         return PrintSingleCityAsync(city);
@@ -80,7 +80,9 @@ public class Weather : IWeather
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine($"{temperature:F2}°");
         Console.ForegroundColor = color;
+
     }
+
 
     private void PrintException(Exception ex)
     {
