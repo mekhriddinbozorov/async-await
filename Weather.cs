@@ -1,12 +1,10 @@
 public class Weather : IWeather
 {
     private readonly WeatherForecast weatherForecast;
-
     public Weather()
     {
         this.weatherForecast = new WeatherForecast();
     }
-
     public static IEnumerable<City> Cities => new List<City>()
     {
         new City(id: 1, name: "New York", latitude: 40.71277, longitude: -74.005974),
@@ -47,7 +45,6 @@ public class Weather : IWeather
         if (city == null)
             throw new CityNotFoundException(randomNumber);
 
-
         return PrintSingleCityAsync(city);
     }
 
@@ -56,7 +53,6 @@ public class Weather : IWeather
         var city = Cities.FirstOrDefault(c => c.Id == id);
         if (city == null)
             throw new CityNotFoundException(id);
-
 
         return PrintSingleCityAsync(city);
     }
