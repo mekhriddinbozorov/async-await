@@ -42,7 +42,6 @@ $@"Error downloading weather:
 
         return concurrentWeathers;
     }
-
     private async Task AddWeatherToDictionaryAsync(City city)
         => concurrentWeathers.TryAdd(city.Name, await GetCityWeatherAsync(city));
 

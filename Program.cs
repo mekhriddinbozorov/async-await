@@ -13,7 +13,6 @@ async Task Start()
             ShowError("Noto'g'ri tanlov, qayta tanlang!");
             continue;
         }
-
         switch(menuInput)
         {
             case 1: await SelectCityAsync(); break;
@@ -53,10 +52,8 @@ Task SelectCityAsync()
                 ShowError($"{1} va {Weather.Cities.Count()} oralig'ida shaxar raqamini tanlang!");
                 continue;
             }
-            
             return weather.PrintSingleCityAsync(city);
         }
-
         if(Weather.CityNames.Any(c => string.Equals(c, cityInput, StringComparison.InvariantCultureIgnoreCase)))
             return weather.PrintSingleCityAsync(cityInput);
 
