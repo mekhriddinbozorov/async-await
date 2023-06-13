@@ -40,7 +40,15 @@ public class Weather : IWeather
 
     public Task PrintRandomCityAsync()
     {
-        throw new NotImplementedException();
+        Random rnd = new Random();
+        int randomNumber = rnd.Next(1, 12);
+
+        var city = Cities.FirstOrDefault(c => c.Id == randomNumber);
+        if (city == null)
+            throw new CityNotFoundException(randomNumber);
+
+
+        return PrintSingleCityAsync(city);
     }
 
     public Task PrintSingleCityAsync(int id)
@@ -48,6 +56,7 @@ public class Weather : IWeather
         var city = Cities.FirstOrDefault(c => c.Id == id);
         if (city == null)
             throw new CityNotFoundException(id);
+
 
         return PrintSingleCityAsync(city);
     }
