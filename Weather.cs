@@ -20,6 +20,7 @@ public class Weather : IWeather
         new City(id: 11, name: "Madinah",latitude: 24.524654, longitude: 39.569183)
     };
 
+
     public static IEnumerable<string> CityNames => Cities.Select(c => c.Name);
 
     public async Task PrintAllCitiesAsync()
