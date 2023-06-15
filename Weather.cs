@@ -39,7 +39,7 @@ public class Weather : IWeather
     public Task PrintRandomCityAsync()
     {
         Random rnd = new Random();
-        int randomNumber = rnd.Next(1, 12);
+        int randomNumber = rnd.Next(0, Cities.Count());
 
         var city = Cities.FirstOrDefault(c => c.Id == randomNumber);
         if (city is null)
